@@ -14,8 +14,12 @@ import javax.persistence.Table;
 @Table(name = "accounts")
 @NamedQueries({
     @NamedQuery(
-            name = "getAllAccount",
+            name = "getAllAccounts",
             query = "SELECT a FROM Account AS a ORDER BY a.id DESC"
+            ),
+    @NamedQuery(
+            name = "getAccountsCount",
+            query = "SELECT COUNT(a) FROM Account AS a"
             ),
     @NamedQuery(
             name = "checkRegisteredCode",
