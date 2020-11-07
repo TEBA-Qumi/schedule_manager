@@ -13,16 +13,16 @@ import javax.servlet.http.HttpServletResponse;
 import models.Schedule;
 
 /**
- * Servlet implementation class SchedulesMewServlet
+ * Servlet implementation class SchedulesNewServlet
  */
 @WebServlet("/schedules/new")
-public class SchedulesMewServlet extends HttpServlet {
+public class SchedulesNewServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SchedulesMewServlet() {
+    public SchedulesNewServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,7 +31,7 @@ public class SchedulesMewServlet extends HttpServlet {
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //セッションIDを取得
+      //セッションIDを取得
         request.setAttribute("_token", request.getSession().getId());
 
         //Scheduleオブジェクトを作成
