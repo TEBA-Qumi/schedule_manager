@@ -24,6 +24,10 @@ import javax.persistence.Table;
     @NamedQuery(
             name = "checkRegisteredCode",
             query = "SELECT COUNT(a) FROM Account AS a WHERE a.code = :code"
+            ),
+    @NamedQuery(
+            name = "checkLoginCodeAndPassword",
+            query = "SELECT a FROM Account AS a WHERE a.delete_flag = 0 AND a.code = :code AND a.password = :pass"
             )
 })
 @Entity
