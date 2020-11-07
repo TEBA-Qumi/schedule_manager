@@ -14,7 +14,7 @@
                 <div id="header_menu">
                     <h1><a href="<c:url value='/' />">スケジュール管理システム</a></h1>&nbsp;&nbsp;&nbsp;
                     <c:if test="${sessionScope.login_account != null}">
-                        <a href="<c:url value='/reports/index' />">スケジュール管理</a>&nbsp;
+                        <a href="<c:url value='/schedules/index' />">スケジュール管理</a>&nbsp;
                     </c:if>
                 </div>
                 <c:if test="${sessionScope.login_account != null}">

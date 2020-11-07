@@ -19,7 +19,7 @@
                </tr>
                <c:forEach var="schedule" items="${schedules}" varStatus="status">
                    <tr class="row${status.count % 2}">
-                       <td class="schedule_name"><c:out value="${schedule.name}" /></td>
+                       <td class="schedule_name"><c:out value="${schedule.account.name}" /></td>
                        <td class="schedule_date"><fmt:formatDate value="${schedule.schedule_date}" pattern="yyyy-MM-dd"/></td>
                        <td class="schedule_title">${schedule.title}</td>
                        <td class="schedule_action"><a href="<c:url value='/schedules/show?id=${schedule.id}'/>">詳細を見る</a></td>

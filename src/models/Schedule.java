@@ -15,7 +15,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
-@Table(name="schdules")
+@Table(name="schedules")
 @NamedQueries({
     @NamedQuery(
             name = "getAllSchedules",
@@ -46,10 +46,6 @@ public class Schedule {
     @Lob
     @Column(name="content", nullable=false)
     private String content;
-
-    @ManyToOne
-    @JoinColumn(name="name", nullable=false)
-    private Account name;
 
     @Column(name="created_at", nullable=false)
     private Timestamp created_at;
@@ -96,14 +92,6 @@ public class Schedule {
 
     public void setContent(String content) {
         this.content = content;
-    }
-
-    public Account getName() {
-        return name;
-    }
-
-    public void setName(Account name) {
-        this.name = name;
     }
 
     public Timestamp getCreated_at() {
