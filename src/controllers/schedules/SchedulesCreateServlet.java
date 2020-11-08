@@ -61,7 +61,7 @@ public class SchedulesCreateServlet extends HttpServlet {
             Timestamp currentTime = new Timestamp(System.currentTimeMillis());
             s.setCreated_at(currentTime);
             s.setUpdated_at(currentTime);
-
+            s.setFinish_flag(0);
             //入力されたデータにエラーがあるかチェック
             List<String> errors = ScheduleValidator.validate(s);
             //エラーがあった際は追加フォームに戻る

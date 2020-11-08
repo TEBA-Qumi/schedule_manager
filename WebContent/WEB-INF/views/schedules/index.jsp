@@ -22,7 +22,17 @@
                        <td class="schedule_name"><c:out value="${schedule.account.name}" /></td>
                        <td class="schedule_date"><fmt:formatDate value="${schedule.schedule_date}" pattern="yyyy-MM-dd"/></td>
                        <td class="schedule_title">${schedule.title}</td>
-                       <td class="schedule_action"><a href="<c:url value='/schedules/show?id=${schedule.id}'/>">詳細を見る</a></td>
+                       <td class="schedule_action">
+                            <c:choose>
+                                <c:when test="${schedule.finish_flag == 1}">
+                                    (完了済み)<br>
+                                    <a href="<c:url value='/schedules/show?id=${schedule.id}'/>">詳細を見る</a>
+                                </c:when>
+                                <c:otherwise>
+                                    <a href="<c:url value='/schedules/show?id=${schedule.id}'/>">詳細を見る</a>
+                                </c:otherwise>
+                            </c:choose>
+                       </td>
                    </tr>
                </c:forEach>
            </tbody>
