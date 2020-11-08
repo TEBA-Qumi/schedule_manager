@@ -22,7 +22,7 @@
                     <c:forEach var="schedule" items="${schedules}" varStatus="status">
                         <tr class="row${status.count % 2}">
                             <td class="schedule_name"><c:out value="${schedule.account.name}" /></td>
-                            <td class="schedule_date"><fmt:formatDate value='${schedule.schedule_date}' pattern='yyyy-MM-dd' /></td>
+                            <td class="schedule_date"><a href="<c:url value='/schedules/daily?schedule_date=${schedule.schedule_date}'/>"><fmt:formatDate value='${schedule.schedule_date}' pattern='yyyy-MM-dd' /></a></td>
                             <td class="schedule_title">${schedule.title}</td>
                             <td class="schedule_action"><a href="<c:url value='/schedules/show?id=${schedule.id}' />">詳細を見る</a></td>
                         </tr>
@@ -44,5 +44,16 @@
             </c:forEach>
         </div>
         <p><a href="<c:url value='/schedules/new' />">スケジュールの追加</a></p>
+
+        <h3>${year}年${month}月</h3>
+        <table id="calendar">
+            <c:forEach var="cal" begin="1" end="${date}" step="1">
+                <tr>
+                    <td class="calendar"><a href="<c:url value='/schedules/show' />">${cal}</a></td>
+                </tr>
+            </c:forEach>
+        </table>
+
+
     </c:param>
 </c:import>

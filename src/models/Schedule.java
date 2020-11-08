@@ -32,6 +32,10 @@ import javax.persistence.Table;
     @NamedQuery(
             name = "getMySchedulesCount",
             query = "SELECT COUNT(s) FROM Schedule AS s WHERE s.account = :account"
+            ),
+    @NamedQuery(
+            name = "getMyDailySchedules",
+            query = "SELECT s FROM Schedule AS s WHERE s.account = :account AND s.schedule_date = :schedule_date"
             )
 })
 @Entity

@@ -69,7 +69,7 @@ public class SchedulesUpdateServlet extends HttpServlet {
 
                 request.getSession().removeAttribute("schedule_id");
 
-                response.sendRedirect(request.getContextPath() + "/schedules/index");
+                response.sendRedirect(request.getContextPath() + "/");
             }
         }
     }

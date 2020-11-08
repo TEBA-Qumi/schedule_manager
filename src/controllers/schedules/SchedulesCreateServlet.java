@@ -82,7 +82,7 @@ public class SchedulesCreateServlet extends HttpServlet {
                 em.close();
                 request.getSession().setAttribute("flush", "追加しました。");
 
-                response.sendRedirect(request.getContextPath() + "/schedules/index");
+                response.sendRedirect(request.getContextPath() + "/");
             }
 
         }

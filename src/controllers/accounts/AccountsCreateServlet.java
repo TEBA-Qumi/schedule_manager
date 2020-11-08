@@ -74,7 +74,7 @@ public class AccountsCreateServlet extends HttpServlet {
                 request.getSession().setAttribute("flush", "登録が完了しました。");
                 em.close();
 
-                response.sendRedirect(request.getContextPath() + "/schedules/index");
+                response.sendRedirect(request.getContextPath() + "/");
             }
         }
     }
