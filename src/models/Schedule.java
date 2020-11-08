@@ -65,6 +65,9 @@ public class Schedule {
     @Column(name="updated_at", nullable=false)
     private Timestamp updated_at;
 
+    @Column(name = "finish_flag", nullable = false)
+    private Integer finish_flag;
+
     // setter / getter
     public Integer getId() {
         return id;
@@ -120,6 +123,14 @@ public class Schedule {
 
     public void setUpdated_at(Timestamp updated_at) {
         this.updated_at = updated_at;
+    }
+
+    public Integer getFinish_flag() {
+        return finish_flag;
+    }
+
+    public void setFinish_flag(Integer finish_flag) {
+        this.finish_flag = finish_flag;
     }
 
 }
