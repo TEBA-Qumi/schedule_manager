@@ -17,6 +17,7 @@
                 <c:if test="${sessionScope.login_account != null}">
                     <div id="account_name">
                         <c:out value="${sessionScope.login_account.name}" />&nbsp;さん&nbsp;&nbsp;&nbsp;
+                        <a href="<c:url value='/accounts/show?id=${login_account.id}' />">アカウント詳細</a>
                         <a href="<c:url value='/logout' />">ログアウト</a>
                     </div>
                 </c:if>
