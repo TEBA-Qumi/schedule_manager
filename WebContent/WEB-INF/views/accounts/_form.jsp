@@ -11,7 +11,7 @@
     </div>
 </c:if>
 <label for="code">アカウント番号</label><br />
-<input type="text" name="code" value="${employee.code}" />
+<input type="text" name="code" value="${account.code}" />
 <br /><br />
 
 <label for="name">名前</label><br />
