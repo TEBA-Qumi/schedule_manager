@@ -60,6 +60,7 @@ public class SchedulesCreateServlet extends HttpServlet {
             s.setTitle(request.getParameter("title"));
             s.setContent(request.getParameter("content"));
             s.setShare_flag(Integer.parseInt(request.getParameter("share_flag")) );
+            s.setFinish_flag(Integer.parseInt(request.getParameter("finish_flag")) );
 
             //日時を取得
             Timestamp currentTime = new Timestamp(System.currentTimeMillis());

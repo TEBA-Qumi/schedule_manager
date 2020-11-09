@@ -49,6 +49,7 @@ public class SchedulesUpdateServlet extends HttpServlet {
             s.setTitle(request.getParameter("title"));
             s.setContent(request.getParameter("content"));
             s.setShare_flag(Integer.parseInt(request.getParameter("share_flag")) );
+            s.setFinish_flag(Integer.parseInt(request.getParameter("finish_flag")));
             //編集した日時を格納
             s.setUpdated_at(new Timestamp(System.currentTimeMillis()));
 
