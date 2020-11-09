@@ -24,6 +24,15 @@
                             </td>
                         </tr>
                         <tr>
+                            <th>公開範囲</th>
+                            <td>
+                                <c:choose>
+                                    <c:when test="${schedule.share_flag == 1}">public</c:when>
+                                    <c:otherwise>private</c:otherwise>
+                                </c:choose>
+                            </td>
+                        </tr>
+                        <tr>
                             <th>登録日時</th>
                             <td>
                                 <fmt:formatDate value="${schedule.created_at}" pattern="yyyy-MM-dd HH:mm:ss" />

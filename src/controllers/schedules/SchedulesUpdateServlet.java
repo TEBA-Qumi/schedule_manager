@@ -43,10 +43,13 @@ public class SchedulesUpdateServlet extends HttpServlet {
             EntityManager em = DBUtil.createEntityManager();
             //投稿のIDと一致するデータを取得
             Schedule s = em.find(Schedule.class, (Integer)(request.getSession().getAttribute("schedule_id")));
+
             //フォームに入力された値をs オブジェクトに格納
             s.setSchedule_date(Date.valueOf(request.getParameter("schedule_date")));
             s.setTitle(request.getParameter("title"));
             s.setContent(request.getParameter("content"));
+            s.setShare_flag(Integer.parseInt(request.getParameter("share_flag")) );
+            //編集した日時を格納
             s.setUpdated_at(new Timestamp(System.currentTimeMillis()));
 
             //入力された値に不備があるかのチェック
@@ -56,7 +59,7 @@ public class SchedulesUpdateServlet extends HttpServlet {
                 em.close();
 
                 request.setAttribute("_token", request.getSession().getId());
-                request.setAttribute("report", s);
+                request.setAttribute("schedule", s);
                 request.setAttribute("errors", errors);
 
                 RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/schedules/edit.jsp");

@@ -68,6 +68,9 @@ public class Schedule {
     @Column(name = "finish_flag", nullable = false)
     private Integer finish_flag;
 
+    @Column(name = "share_flag", nullable = false)
+    private Integer share_flag;
+
     // setter / getter
     public Integer getId() {
         return id;
@@ -132,5 +135,14 @@ public class Schedule {
     public void setFinish_flag(Integer finish_flag) {
         this.finish_flag = finish_flag;
     }
+
+    public Integer getShare_flag() {
+        return share_flag;
+    }
+
+    public void setShare_flag(Integer share_flag) {
+        this.share_flag = share_flag;
+    }
+
 
 }

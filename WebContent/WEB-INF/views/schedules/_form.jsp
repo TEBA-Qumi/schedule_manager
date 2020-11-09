@@ -11,7 +11,7 @@
     </div>
 </c:if>
 <label for="schedule_date">日付</label><br />
-<input type="date" name="schedule_date" value="<fmt:formatDate value='${schdule.schedule_date}' pattern='yyyy-MM-dd' />" />
+<input type="date" name="schedule_date" value="<fmt:formatDate value='${schedule.schedule_date}' pattern='yyyy-MM-dd' />" />
 <br /><br />
 
 <label for="name">名前</label><br />
@@ -24,6 +24,13 @@
 
 <label for="content">内容</label><br />
 <textarea name="content" rows="10" cols="50">${schedule.content}</textarea>
+<br /><br />
+
+<label for="share_flag">公開範囲</label><br />
+<select name="share_flag">
+    <option value="0"<c:if test="${schedule.share_flag == 0}"> selected</c:if>>private</option>
+    <option value="1"<c:if test="${schedule.share_flag == 1}"> selected</c:if>>public</option>
+</select>
 <br /><br />
 
 <input type="hidden" name="_token" value="${_token}" />

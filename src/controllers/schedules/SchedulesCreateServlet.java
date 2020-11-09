@@ -49,7 +49,9 @@ public class SchedulesCreateServlet extends HttpServlet {
             s.setAccount((Account)request.getSession().getAttribute("login_account"));
             //現在の日付を取得
             Date schedule_date = new Date(System.currentTimeMillis());
+            //スケジュールの日付をString型で取得
             String rd_str = request.getParameter("schedule_date");
+            //取得したすけじゅーる　の日付をschedule_dateに格納
             if(rd_str != null && !rd_str.equals("")){
                 schedule_date = Date.valueOf(request.getParameter("schedule_date"));
             }
@@ -57,11 +59,14 @@ public class SchedulesCreateServlet extends HttpServlet {
             //フォームで入力された値を取得
             s.setTitle(request.getParameter("title"));
             s.setContent(request.getParameter("content"));
+            s.setShare_flag(Integer.parseInt(request.getParameter("share_flag")) );
 
+            //日時を取得
             Timestamp currentTime = new Timestamp(System.currentTimeMillis());
             s.setCreated_at(currentTime);
             s.setUpdated_at(currentTime);
             s.setFinish_flag(0);
+
             //入力されたデータにエラーがあるかチェック
             List<String> errors = ScheduleValidator.validate(s);
             //エラーがあった際は追加フォームに戻る
