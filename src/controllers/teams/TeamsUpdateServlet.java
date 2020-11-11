@@ -20,7 +20,7 @@ import utils.EncryptUtil;
 /**
  * Servlet implementation class TeamsUpdateServlet
  */
-@WebServlet("/teams/create")
+@WebServlet("/teams/update")
 public class TeamsUpdateServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
@@ -90,6 +90,7 @@ public class TeamsUpdateServlet extends HttpServlet {
                 response.sendRedirect(request.getContextPath() + "/");
             }
         }
+
     }
 
 }

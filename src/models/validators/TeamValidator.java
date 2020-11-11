@@ -36,7 +36,7 @@ public class TeamValidator {
             return "チーム番号を入力してください。";
         }
 
-        // すでに登録されている社員番号との重複チェック
+        // すでに登録されているチーム番号との重複チェック
         if(team_code_duplicate_check_flag) {
             EntityManager em = DBUtil.createEntityManager();
             long teams_count = (long)em.createNamedQuery("checkRegisteredTeam_code", Long.class)
@@ -53,7 +53,7 @@ public class TeamValidator {
 
     private static String _validateName(String name) {
         if(name == null || name.equals("")) {
-            return "名前を入力してください。";
+            return "チーム名を入力してください。";
             }
         return "";
     }

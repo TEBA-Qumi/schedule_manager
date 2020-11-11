@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import models.Team;
-import models.validators.TeamsValidator;
+import models.validators.TeamValidator;
 import utils.DBUtil;
 import utils.EncryptUtil;
 
@@ -55,7 +55,7 @@ public class TeamsCreateServlet extends HttpServlet {
             t.setCreated_at(currentTime);
             t.setUpdated_at(currentTime);
 
-            List<String> errors = TeamsValidator.validate(t, true, true);
+            List<String> errors = TeamValidator.validate(t, true, true);
             if(errors.size() > 0) {
                 em.close();
 
