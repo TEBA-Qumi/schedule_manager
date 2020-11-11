@@ -14,16 +14,16 @@ import models.Team;
 import utils.DBUtil;
 
 /**
- * Servlet implementation class TeamEditServlet
+ * Servlet implementation class TeamsEditServlet
  */
 @WebServlet("/teams/edit")
-public class TeamEditServlet extends HttpServlet {
+public class TeamsEditServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public TeamEditServlet() {
+    public TeamsEditServlet() {
         super();
         // TODO Auto-generated constructor stub
     }

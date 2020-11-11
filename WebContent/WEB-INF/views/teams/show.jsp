@@ -11,7 +11,7 @@
                     <tbody>
                         <tr>
                             <th>チーム番号</th>
-                            <td><c:out value="${team.code}" /></td>
+                            <td><c:out value="${team.team_code}" /></td>
                         </tr>
                         <tr>
                             <th>チーム名</th>

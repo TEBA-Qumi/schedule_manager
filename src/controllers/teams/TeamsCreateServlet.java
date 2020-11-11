@@ -18,16 +18,16 @@ import utils.DBUtil;
 import utils.EncryptUtil;
 
 /**
- * Servlet implementation class TeamCreateServlet
+ * Servlet implementation class TeamsCreateServlet
  */
 @WebServlet("/teams/create")
-public class TeamCreateServlet extends HttpServlet {
+public class TeamsCreateServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public TeamCreateServlet() {
+    public TeamsCreateServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -75,7 +75,6 @@ public class TeamCreateServlet extends HttpServlet {
                 response.sendRedirect(request.getContextPath() + "/");
             }
         }
-
     }
 
 }
