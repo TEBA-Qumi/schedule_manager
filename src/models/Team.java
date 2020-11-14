@@ -1,6 +1,7 @@
 package models;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Table(name="teams")
@@ -32,6 +34,9 @@ public class Team {
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @OneToMany(mappedBy = "team_Id")
+    private List<Account_Team> team_ids;
 
     @Column(name="name", nullable=false)
     private String name;
@@ -95,6 +100,14 @@ public class Team {
 
     public void setUpdated_at(Timestamp updated_at) {
         this.updated_at = updated_at;
+    }
+
+    public List<Account_Team> getTeam_ids() {
+        return team_ids;
+    }
+
+    public void setTeam_ids(List<Account_Team> team_ids) {
+        this.team_ids = team_ids;
     }
 
 

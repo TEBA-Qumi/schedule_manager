@@ -5,6 +5,7 @@
 		<class>models.Account</class>
 		<class>models.Schedule</class>
 		<class>models.Team</class>
+		<class>models.Account_Team</class>
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/schedule_manager?useSSL=false&amp;useUnicode=true&amp;characterEncoding=utf8"/>
