@@ -26,6 +26,10 @@ import javax.persistence.Table;
     @NamedQuery(
             name = "checkRegisteredTeam_code",
             query = "SELECT COUNT(t) FROM Team AS t WHERE t.team_code = :team_code"
+            ),
+    @NamedQuery(
+            name = "checkJoinCodeAndPassword",
+            query = "SELECT t FROM Team AS t WHERE t.team_code = :team_code AND t.password = :pass"
             )
 })
 @Entity
@@ -41,7 +45,7 @@ public class Team {
     @Column(name="name", nullable=false)
     private String name;
 
-    @Column(name="password")
+    @Column(name="password", nullable = false)
     private String password;
 
     @Column(name="team_code", nullable=false,unique=true)
