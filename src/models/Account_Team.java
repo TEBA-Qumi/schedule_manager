@@ -38,6 +38,7 @@ public class Account_Team {
     @JoinColumn(name = "team_Id", nullable = false)
     private Team team_Id;
 
+    //getter / setter
     public Integer getId() {
         return id;
     }

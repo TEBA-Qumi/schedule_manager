@@ -69,7 +69,7 @@
             <tbody>
                 <c:forEach var="team" items="${teams}" varStatus="status">
                      <tr class="row${status.count % 2}">
-                         <td class="team_name"><c:out value="${team.name}" /></td>
+                         <td class="team_Id"><c:out value="${team.Id}" /></td>
                          <td> <a href="<c:url value='/teams/show?id=${team.id}'/>">詳細を見る</a></td>
                      </tr>
                  </c:forEach>
@@ -77,6 +77,7 @@
         </table>
 
         <p><a href="<c:url value='/teams/new' />">チームを作成</a></p>
+        <p><a href="<c:url value='/teams/join' />">チームに参加</a></p>
 
     </c:param>
 </c:import>
