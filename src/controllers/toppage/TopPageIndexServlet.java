@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import models.Account;
+import models.Account_Team;
 import models.Schedule;
 import utils.DBUtil;
 
@@ -55,6 +56,11 @@ public class TopPageIndexServlet extends HttpServlet {
                                      .setParameter("account", login_account)
                                      .getSingleResult();
 
+        List<Account_Team> join_teams = em.createNamedQuery("getMyAllTeams", Account_Team.class)
+                                    .setParameter("account", login_account)
+                                    .setFirstResult(15 * (page - 1))
+                                    .setMaxResults(15)
+                                    .getResultList();
         em.close();
         //カレンダーのためのデータを取得
         Calendar cal = Calendar.getInstance();
@@ -70,6 +76,7 @@ public class TopPageIndexServlet extends HttpServlet {
         request.setAttribute("month",month);
         request.setAttribute("date",thisMonthlastDay);
 
+        request.setAttribute("join_teams", join_teams);
         request.setAttribute("schedules", schedules);
         request.setAttribute("schedules_count", schedules_count);
         request.setAttribute("page", page);

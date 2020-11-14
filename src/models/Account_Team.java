@@ -16,11 +16,11 @@ import javax.persistence.Table;
 @NamedQueries({
     @NamedQuery(
             name = "getMyAllTeams",
-            query = "SELECT a_t FROM Account_Team AS a_t WHERE a_t.account_Id = :account_Id AND a_t.team_Id = :team_Id"
+            query = "SELECT a_t FROM Account_Team AS a_t WHERE a_t.account_Id = :account "
             ),
     @NamedQuery(
             name = "getMyTeamsCount",
-            query = "SELECT COUNT(a_t) FROM Account_Team AS a_t WHERE a_t.account_Id = :account_Id AND a_t.team_Id = :team_Id"
+            query = "SELECT COUNT(a_t) FROM Account_Team AS a_t"
             )
     })
 @Entity

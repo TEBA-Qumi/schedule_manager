@@ -29,7 +29,7 @@ import javax.persistence.Table;
             ),
     @NamedQuery(
             name = "checkJoinCodeAndPassword",
-            query = "SELECT t FROM Team AS t WHERE t.team_code = :team_code AND t.password = :pass"
+            query = "SELECT t.id FROM Team AS t WHERE t.team_code = :team_code AND t.password = :pass"
             )
 })
 @Entity

@@ -59,18 +59,18 @@ public class TeamsJoinServlet extends HttpServlet {
                     (String)this.getServletContext().getAttribute("pepper")
                     );
 
-         // 社員番号とパスワードが正しいかチェックする
-            try {
-                t = em.createNamedQuery("checkJoinCodeAndPassword", Team.class)
-                      .setParameter("team_code", team_code)
-                      .setParameter("pass", password)
-                      .getSingleResult();
-            } catch(NoResultException ex) {}
+     // 社員番号とパスワードが正しいかチェックする
+        try {
+            t = em.createNamedQuery("checkJoinCodeAndPassword", Team.class)
+                  .setParameter("team_code", team_code)
+                  .setParameter("pass", password)
+                  .getSingleResult();
+        } catch(NoResultException ex) {}
 
-            em.close();
+        em.close();
 
-            if(t != null) {
-                check_result = true;
+        if(t != null) {
+            check_result = true;
         }
     }
 
