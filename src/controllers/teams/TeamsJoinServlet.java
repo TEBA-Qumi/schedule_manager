@@ -11,8 +11,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import models.Account;
-import models.Account_Team;
 import models.Team;
 import utils.DBUtil;
 import utils.EncryptUtil;
@@ -86,17 +84,6 @@ public class TeamsJoinServlet extends HttpServlet {
         rd.forward(request, response);
     } else {
         // 認証できたらログイン状態にしてトップページへリダイレクト
-        EntityManager em = DBUtil.createEntityManager();
-
-        Account_Team a_t = new Account_Team();
-
-        a_t.setTeam_Id((Team)request.getAttribute("id"));
-        a_t.setAccount_Id((Account)request.getSession().getAttribute("login_account"));
-
-        em.getTransaction().begin();
-        em.persist(a_t);
-        em.getTransaction().commit();
-        em.close();
 
         request.getSession().setAttribute("joint_team", t);
 
