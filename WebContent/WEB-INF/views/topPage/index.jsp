@@ -65,9 +65,11 @@
         </table>
 
         <h3>チーム一覧</h3>
-        <c:forEach var="team" items="${teams}" varStatus="status">
-            <c:out value="${team.team_Id.name}" /><br>
-        </c:forEach>
+        <div id = "team">
+            <c:forEach var="team" items="${teams}" varStatus="status">
+                <c:out value="${team.team_Id.name}" /><br>
+            </c:forEach>
+        </div>
 
         <p><a href="<c:url value='/teams/new' />">チームを作成</a></p>
         <p><a href="<c:url value='/teams/join' />">チームに参加</a></p>

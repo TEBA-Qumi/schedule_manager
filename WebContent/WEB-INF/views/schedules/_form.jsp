@@ -29,7 +29,9 @@
 <label for="share_flag">公開範囲</label><br />
 <select name="share_flag">
     <option value="0"<c:if test="${schedule.share_flag == 0}"> selected</c:if>>private</option>
-    <option value="1"<c:if test="${schedule.share_flag == 1}"> selected</c:if>>public</option>
+    <c:forEach var="team" items="${teams}" varStatus="status">
+        <option value="1"<c:if test="${schedule.share_flag == team.team_Id.id}"> selected</c:if>>${team.team_Id.name}</option>
+    </c:forEach>
 </select>
 <br /><br />
 
