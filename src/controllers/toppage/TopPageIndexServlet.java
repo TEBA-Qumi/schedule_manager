@@ -13,8 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import models.Account;
+import models.Account_Team;
 import models.Schedule;
-import models.Team;
 import utils.DBUtil;
 
 /**
@@ -40,6 +40,7 @@ public class TopPageIndexServlet extends HttpServlet {
 
         Account login_account = (Account)request.getSession().getAttribute("login_account");
 
+
         int page;
         try{
             page = Integer.parseInt(request.getParameter("page"));
@@ -56,18 +57,12 @@ public class TopPageIndexServlet extends HttpServlet {
                                      .setParameter("account", login_account)
                                      .getSingleResult();
 
-        List<Team> teams = em.createNamedQuery("getAllTeams", Team.class)
-                                    .setFirstResult(15 * (page - 1))
-                                    .setMaxResults(15)
-                                    .getResultList();
+        List<Account_Team> teams = em.createNamedQuery("getMyTeams", Account_Team.class)
+                .setFirstResult(15 * (page - 1))
+                .setParameter("account_Id", login_account.getAccount_ids())
+                .setMaxResults(15)
+                .getResultList();
 
-        List<Team> join_teams = em.createNamedQuery("getMyAllTeams", Team.class)
-                                    .setParameter("account_Id", login_account)
-                                    .setParameter("account", login_account)
-                                    .setParameter("team_Id", teams)
-                                    .setFirstResult(15 * (page - 1))
-                                    .setMaxResults(15)
-                                    .getResultList();
         em.close();
         //カレンダーのためのデータを取得
         Calendar cal = Calendar.getInstance();
@@ -83,7 +78,7 @@ public class TopPageIndexServlet extends HttpServlet {
         request.setAttribute("month",month);
         request.setAttribute("date",thisMonthlastDay);
 
-        request.setAttribute("join_teams", join_teams);
+        request.setAttribute("teams", teams);
         request.setAttribute("schedules", schedules);
         request.setAttribute("schedules_count", schedules_count);
         request.setAttribute("page", page);

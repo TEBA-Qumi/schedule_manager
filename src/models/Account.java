@@ -1,7 +1,6 @@
 package models;
 
 import java.sql.Timestamp;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,7 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Table(name = "accounts")
@@ -39,9 +37,6 @@ public class Account {
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
-    @OneToMany(mappedBy = "account_Id")
-    private List<Account_Team> account_ids;
 
     @Column(name = "code", nullable = false, unique = true)
     private String code;
@@ -118,12 +113,9 @@ public class Account {
         this.code = code;
     }
 
-    public List<Account_Team> getAccount_ids() {
-        return account_ids;
-    }
+    public Object getAccount_ids() {
 
-    public void setAccount_ids(List<Account_Team> account_ids) {
-        this.account_ids = account_ids;
+        return this;
     }
 
 
