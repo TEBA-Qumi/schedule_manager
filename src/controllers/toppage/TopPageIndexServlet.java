@@ -13,8 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import models.Account;
-import models.Account_Team;
 import models.Schedule;
+import models.Team;
 import utils.DBUtil;
 
 /**
@@ -56,8 +56,15 @@ public class TopPageIndexServlet extends HttpServlet {
                                      .setParameter("account", login_account)
                                      .getSingleResult();
 
-        List<Account_Team> join_teams = em.createNamedQuery("getMyAllTeams", Account_Team.class)
+        List<Team> teams = em.createNamedQuery("getAllTeams", Team.class)
+                                    .setFirstResult(15 * (page - 1))
+                                    .setMaxResults(15)
+                                    .getResultList();
+
+        List<Team> join_teams = em.createNamedQuery("getMyAllTeams", Team.class)
+                                    .setParameter("account_Id", login_account)
                                     .setParameter("account", login_account)
+                                    .setParameter("team_Id", teams)
                                     .setFirstResult(15 * (page - 1))
                                     .setMaxResults(15)
                                     .getResultList();

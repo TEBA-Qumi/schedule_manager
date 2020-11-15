@@ -15,10 +15,6 @@ import javax.persistence.Table;
 @Table(name = "account_team")
 @NamedQueries({
     @NamedQuery(
-            name = "getMyAllTeams",
-            query = "SELECT a_t FROM Account_Team AS a_t WHERE a_t.account_Id = :account "
-            ),
-    @NamedQuery(
             name = "getMyTeamsCount",
             query = "SELECT COUNT(a_t) FROM Account_Team AS a_t"
             )

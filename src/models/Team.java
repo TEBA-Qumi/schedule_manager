@@ -17,7 +17,11 @@ import javax.persistence.Table;
 @NamedQueries({
     @NamedQuery(
             name = "getAllTeams",
-            query = "SELECT t FROM Team AS t ORDER BY t.id DESC"
+            query = "SELECT t.id FROM Team AS t ORDER BY t.id DESC"
+            ),
+    @NamedQuery(
+            name = "getMyAllTeams",
+            query = "SELECT t.name FROM Account AS a,Team AS t, Account_Team AS a_t WHERE a.id = :account AND a_t.account_Id = :account AND t.id = :team_Id"
             ),
     @NamedQuery(
             name = "getTeamsCount",
@@ -29,7 +33,7 @@ import javax.persistence.Table;
             ),
     @NamedQuery(
             name = "checkJoinCodeAndPassword",
-            query = "SELECT t.id FROM Team AS t WHERE t.team_code = :team_code AND t.password = :pass"
+            query = "SELECT t FROM Team AS t WHERE t.team_code = :team_code AND t.password = :pass"
             )
 })
 @Entity

@@ -66,7 +66,7 @@
 
         <h3>チーム一覧</h3>
         <c:forEach var="join_team" items="${join_teams}" varStatus="status">
-            <td><c:out value="${join_team.id}" /></td>
+            <c:out value="${join_team}" /><br>
         </c:forEach>
 
         <p><a href="<c:url value='/teams/new' />">チームを作成</a></p>
