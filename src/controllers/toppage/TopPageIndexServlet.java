@@ -47,12 +47,13 @@ public class TopPageIndexServlet extends HttpServlet {
         } catch(Exception e) {
             page = 1;
         }
+        //スケジュールの内容を取得
         List<Schedule> schedules = em.createNamedQuery("getMyAllSchedules", Schedule.class)
                                   .setParameter("account", login_account)
                                   .setFirstResult(15 * (page - 1))
                                   .setMaxResults(15)
                                   .getResultList();
-
+//スケジュールの数を取得
         long schedules_count = (long)em.createNamedQuery("getMySchedulesCount", Long.class)
                                      .setParameter("account", login_account)
                                      .getSingleResult();
