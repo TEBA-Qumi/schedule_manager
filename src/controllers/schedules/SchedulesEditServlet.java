@@ -1,6 +1,7 @@
 package controllers.schedules;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.servlet.RequestDispatcher;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import models.Account;
+import models.Account_Team;
 import models.Schedule;
 import utils.DBUtil;
 
@@ -37,10 +39,16 @@ public class SchedulesEditServlet extends HttpServlet {
 
         Schedule s = em.find(Schedule.class, Integer.parseInt(request.getParameter("id")));
 
-        em.close();
 
         Account login_account = (Account)request.getSession().getAttribute("login_account");
         if(s != null && login_account.getId() == s.getAccount().getId()) {
+            //セッションにあるアカウントオブジェクトを元にAccount_Teamオブジェクトを取得
+            List<Account_Team> teams = em.createNamedQuery("getMyTeams", Account_Team.class)
+                    .setParameter("account_Id", login_account.getAccount_ids())
+                    .getResultList();
+
+            em.close();
+            request.setAttribute("teams", teams);
             request.setAttribute("schedule", s);
             request.setAttribute("_token", request.getSession().getId());
             request.getSession().setAttribute("schedule_id", s.getId());
