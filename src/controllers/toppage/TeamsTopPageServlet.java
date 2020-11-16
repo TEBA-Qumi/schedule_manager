@@ -40,27 +40,26 @@ public class TeamsTopPageServlet extends HttpServlet {
 
         Account login_account = (Account)request.getSession().getAttribute("login_account");
 
-
         int page;
         try{
             page = Integer.parseInt(request.getParameter("page"));
         } catch(Exception e) {
             page = 1;
         }
-        //スケジュールの内容を取得
-        List<Schedule> schedules = em.createNamedQuery("getMyAllSchedules", Schedule.class)
-                                  .setParameter("account", login_account)
-                                  .setFirstResult(15 * (page - 1))
-                                  .setMaxResults(15)
-                                  .getResultList();
 //スケジュールの数を取得
-        long schedules_count = (long)em.createNamedQuery("getMySchedulesCount", Long.class)
-                                     .setParameter("account", login_account)
-                                     .getSingleResult();
+//        long schedules_count = (long)em.createNamedQuery("getMySchedulesCount", Long.class)
+//                                     .setParameter("account", login_account)
+//                                     .getSingleResult();
+
+        //スケジュールの内容を取得
+        List<Schedule> schedules = em.createNamedQuery("getAllSchedules", Schedule.class)
+                .setFirstResult(15 * (page - 1))
+                .setMaxResults(15)
+                .getResultList();
 
         List<Account_Team> teams = em.createNamedQuery("getMyTeams", Account_Team.class)
                 .setFirstResult(15 * (page - 1))
-                .setParameter("account_Id", login_account.getAccount_ids())
+                .setParameter("account_Id", login_account)
                 .setMaxResults(15)
                 .getResultList();
 
@@ -81,7 +80,6 @@ public class TeamsTopPageServlet extends HttpServlet {
 
         request.setAttribute("teams", teams);
         request.setAttribute("schedules", schedules);
-        request.setAttribute("schedules_count", schedules_count);
         request.setAttribute("page", page);
 
         if(request.getSession().getAttribute("flush") != null) {
@@ -89,7 +87,7 @@ public class TeamsTopPageServlet extends HttpServlet {
             request.getSession().removeAttribute("flush");
         }
 
-        RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/topPage/index.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/topPage/teams.jsp");
         rd.forward(request, response);
     }
 

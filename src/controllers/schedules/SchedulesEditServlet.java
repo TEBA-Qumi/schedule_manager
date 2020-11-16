@@ -44,7 +44,7 @@ public class SchedulesEditServlet extends HttpServlet {
         if(s != null && login_account.getId() == s.getAccount().getId()) {
             //セッションにあるアカウントオブジェクトを元にAccount_Teamオブジェクトを取得
             List<Account_Team> teams = em.createNamedQuery("getMyTeams", Account_Team.class)
-                    .setParameter("account_Id", login_account.getAccount_ids())
+                    .setParameter("account_Id", login_account)
                     .getResultList();
 
             em.close();

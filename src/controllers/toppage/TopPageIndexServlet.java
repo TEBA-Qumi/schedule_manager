@@ -60,7 +60,7 @@ public class TopPageIndexServlet extends HttpServlet {
 
         List<Account_Team> teams = em.createNamedQuery("getMyTeams", Account_Team.class)
                 .setFirstResult(15 * (page - 1))
-                .setParameter("account_Id", login_account.getAccount_ids())
+                .setParameter("account_Id", login_account)
                 .setMaxResults(15)
                 .getResultList();
 

@@ -18,8 +18,12 @@ import javax.persistence.Table;
 @Table(name="schedules")
 @NamedQueries({
     @NamedQuery(
+            name = "getTeamsAllSchedules",
+            query = "SELECT s FROM Schedule AS s WHERE s.share_flag = :share_flag"
+            ),
+    @NamedQuery(
             name = "getAllSchedules",
-            query = "SELECT s FROM Schedule AS s ORDER BY s.id DESC"
+            query = "SELECT s FROM Schedule AS s"
             ),
     @NamedQuery(
             name = "getSchedulesCount",

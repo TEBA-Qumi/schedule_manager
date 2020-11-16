@@ -20,22 +20,26 @@
                         <th class="schedule_action">操作</th>
                     </tr>
                     <c:forEach var="schedule" items="${schedules}" varStatus="status">
-                        <tr class="row${status.count % 2}">
-                            <td class="schedule_name"><c:out value="${schedule.account.name}" /></td>
-                            <td class="schedule_date"><a href="<c:url value='/schedules/daily?schedule_date=${schedule.schedule_date}'/>"><fmt:formatDate value='${schedule.schedule_date}' pattern='yyyy-MM-dd' /></a></td>
-                            <td class="schedule_title">${schedule.title}</td>
-                            <td class="schedule_action">
-                                <c:choose>
-                                <c:when test="${schedule.finish_flag == 1}">
-                                    (完了済み)<br>
-                                    <a href="<c:url value='/schedules/show?id=${schedule.id}'/>">詳細を見る</a>
-                                </c:when>
-                                <c:otherwise>
-                                    <a href="<c:url value='/schedules/show?id=${schedule.id}'/>">詳細を見る</a>
-                                </c:otherwise>
-                            </c:choose>
-                            </td>
-                        </tr>
+                        <c:forEach var ="team" items = "${teams}" varStatus="status">
+                            <c:if test="${schedule.share_flag == team.team_Id.id}">
+                                <tr class="row${status.count % 2}">
+                                    <td class="schedule_name"><c:out value="${schedule.account.name}" /></td>
+                                    <td class="schedule_date"><a href="<c:url value='/schedules/daily?schedule_date=${schedule.schedule_date}'/>"><fmt:formatDate value='${schedule.schedule_date}' pattern='yyyy-MM-dd' /></a></td>
+                                    <td class="schedule_title">${schedule.title}</td>
+                                    <td class="schedule_action">
+                                        <c:choose>
+                                        <c:when test="${schedule.finish_flag == 1}">
+                                            (完了済み)<br>
+                                            <a href="<c:url value='/schedules/show?id=${schedule.id}'/>">詳細を見る</a>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <a href="<c:url value='/schedules/show?id=${schedule.id}'/>">詳細を見る</a>
+                                        </c:otherwise>
+                                    </c:choose>
+                                    </td>
+                                </tr>
+                            </c:if>
+                        </c:forEach>
                     </c:forEach>
                 </tbody>
             </table>
@@ -64,15 +68,8 @@
             </c:forEach>
         </table>
 
-        <h3>チーム一覧</h3>
-        <div id = "team">
-            <c:forEach var="team" items="${teams}" varStatus="status">
-                <a href = "<c:url value='/teams/topPage?id=${team.team_Id}' />"><c:out value="${team.team_Id.name}" /></a><br>
-            </c:forEach>
-        </div>
 
-        <p><a href="<c:url value='/teams/new' />">チームを作成</a></p>
-        <p><a href="<c:url value='/teams/join' />">チームに参加</a></p>
+        <p><a href="<c:url value='/' />">個人ページに戻る</a></p>
 
-    </c:param>
+</c:param>
 </c:import>

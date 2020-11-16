@@ -113,10 +113,4 @@ public class Account {
         this.code = code;
     }
 
-    public Object getAccount_ids() {
-
-        return this;
-    }
-
-
 }

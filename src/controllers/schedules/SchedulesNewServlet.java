@@ -48,7 +48,7 @@ public class SchedulesNewServlet extends HttpServlet {
         Account login_account = (Account)request.getSession().getAttribute("login_account");
 
         List<Account_Team> teams = em.createNamedQuery("getMyTeams", Account_Team.class)
-                .setParameter("account_Id", login_account.getAccount_ids())
+                .setParameter("account_Id", login_account)
                 .getResultList();
 
         em.close();
