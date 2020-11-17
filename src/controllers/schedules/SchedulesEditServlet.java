@@ -37,9 +37,10 @@ public class SchedulesEditServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         EntityManager em = DBUtil.createEntityManager();
 
+        //idと一致するスケジュールを取得
         Schedule s = em.find(Schedule.class, Integer.parseInt(request.getParameter("id")));
 
-
+        //セッションに存在するアカウントオブジェクトを取得
         Account login_account = (Account)request.getSession().getAttribute("login_account");
         if(s != null && login_account.getId() == s.getAccount().getId()) {
             //セッションにあるアカウントオブジェクトを元にAccount_Teamオブジェクトを取得

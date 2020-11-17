@@ -51,7 +51,7 @@ public class SchedulesCreateServlet extends HttpServlet {
             Date schedule_date = new Date(System.currentTimeMillis());
             //スケジュールの日付をString型で取得
             String rd_str = request.getParameter("schedule_date");
-            //取得したすけじゅーる　の日付をschedule_dateに格納
+            //取得したスケジュールの日付をschedule_dateに格納
             if(rd_str != null && !rd_str.equals("")){
                 schedule_date = Date.valueOf(request.getParameter("schedule_date"));
             }

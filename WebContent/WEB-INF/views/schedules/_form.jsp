@@ -30,7 +30,7 @@
 <select name="share_flag">
     <option value="0"<c:if test="${schedule.share_flag == 0}"> selected</c:if>>private</option>
     <c:forEach var="team" items="${teams}" varStatus="status">
-        <option value="1"<c:if test="${schedule.share_flag == team.team_Id.id}"> selected</c:if>>${team.team_Id.name}</option>
+        <option value="${team.team_Id.id}"<c:if test="${schedule.share_flag == team.team_Id.id}"> selected</c:if>>${team.team_Id.name}</option>
     </c:forEach>
 </select>
 <br /><br />
