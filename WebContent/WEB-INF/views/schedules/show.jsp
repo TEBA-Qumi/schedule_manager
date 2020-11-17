@@ -27,8 +27,14 @@
                             <th>公開範囲</th>
                             <td>
                                 <c:choose>
-                                    <c:when test="${schedule.share_flag == 1}">public</c:when>
-                                    <c:otherwise>private</c:otherwise>
+                                    <c:when test="${schedule.share_flag == 0}">private</c:when>
+                                    <c:otherwise>
+                                        <c:forEach var="team" items="${teams}" varStatus="status">
+                                            <c:if test="${schedule.share_flag == team.team_Id.id}">
+                                                <c:out value="${team.team_Id.name}"/>
+                                            </c:if>
+                                        </c:forEach>
+                                    </c:otherwise>
                                 </c:choose>
                             </td>
                         </tr>

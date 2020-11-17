@@ -67,7 +67,7 @@
         <h3>チーム一覧</h3>
         <div id = "team">
             <c:forEach var="team" items="${teams}" varStatus="status">
-                <a href = "<c:url value='/teams/topPage?id=${team.team_Id.id}' />"><c:out value="${team.team_Id.id}" /></a><br>
+                <a href = "<c:url value='/teams/topPage?id=${team.team_Id.id}' />"><c:out value="${team.team_Id.name}" /></a><br>
             </c:forEach>
         </div>
 
