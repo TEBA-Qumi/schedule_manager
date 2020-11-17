@@ -12,8 +12,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import models.Account;
-import models.Account_Team;
 import models.Schedule;
 import utils.DBUtil;
 
@@ -38,32 +36,29 @@ public class TeamsTopPageServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         EntityManager em = DBUtil.createEntityManager();
 
-        Account login_account = (Account)request.getSession().getAttribute("login_account");
+        if(request.getParameter("id") != null){
+            //チームIdを取得
+            Integer id = Integer.parseInt(request.getParameter("id"));
 
-        int page;
-        try{
-            page = Integer.parseInt(request.getParameter("page"));
-        } catch(Exception e) {
-            page = 1;
+            int page;
+            try{
+                page = Integer.parseInt(request.getParameter("page"));
+            } catch(Exception e) {
+                page = 1;
+            }
+
+            //チームごとのスケジュールの内容を取得
+            List<Schedule> schedules = em.createNamedQuery("getTeamsAllSchedules", Schedule.class)
+                    .setFirstResult(15 * (page - 1))
+                    .setParameter("share_flag", id)
+                    .setMaxResults(15)
+                    .getResultList();
+
+            em.close();
+
+            request.setAttribute("schedules", schedules);
+            request.setAttribute("page", page);
         }
-//スケジュールの数を取得
-//        long schedules_count = (long)em.createNamedQuery("getMySchedulesCount", Long.class)
-//                                     .setParameter("account", login_account)
-//                                     .getSingleResult();
-
-        //スケジュールの内容を取得
-        List<Schedule> schedules = em.createNamedQuery("getAllSchedules", Schedule.class)
-                .setFirstResult(15 * (page - 1))
-                .setMaxResults(15)
-                .getResultList();
-
-        List<Account_Team> teams = em.createNamedQuery("getMyTeams", Account_Team.class)
-                .setFirstResult(15 * (page - 1))
-                .setParameter("account_Id", login_account)
-                .setMaxResults(15)
-                .getResultList();
-
-        em.close();
         //カレンダーのためのデータを取得
         Calendar cal = Calendar.getInstance();
         //現在の年と月を取得
@@ -78,9 +73,6 @@ public class TeamsTopPageServlet extends HttpServlet {
         request.setAttribute("month",month);
         request.setAttribute("date",thisMonthlastDay);
 
-        request.setAttribute("teams", teams);
-        request.setAttribute("schedules", schedules);
-        request.setAttribute("page", page);
 
         if(request.getSession().getAttribute("flush") != null) {
             request.setAttribute("flush", request.getSession().getAttribute("flush"));
