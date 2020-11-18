@@ -15,7 +15,7 @@
         </c:choose>
 
         <p><a href="<c:url value='/' />">一覧に戻る</a></p>
-        <p><a href="#" onclick="confirmDestroy();">このメッセージを削除する</a></p>
+        <p><a href="#" onclick="confirmDestroy();">このスケジュールを削除する</a></p>
         <form method="POST" action="${pageContext.request.contextPath}/schedules/destroy">
             <input type="hidden" name="_token" value="${_token}" />
         </form>
