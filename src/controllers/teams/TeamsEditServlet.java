@@ -33,7 +33,7 @@ public class TeamsEditServlet extends HttpServlet {
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         EntityManager em = DBUtil.createEntityManager();
-
+        //idから該当するチームを取得
         Team t = em.find(Team.class, Integer.parseInt(request.getParameter("id")));
 
         em.close();

@@ -39,9 +39,9 @@ public class TeamsCreateServlet extends HttpServlet {
         String _token = (String)request.getParameter("_token");
         if(_token != null && _token.equals(request.getSession().getId()) ){
             EntityManager em = DBUtil.createEntityManager();
-
+            //チームオブジェクトを作成
             Team t = new Team();
-
+            //入力された値をオブジェクトに格納
             t.setTeam_code(request.getParameter("team_code"));
             t.setName(request.getParameter("name"));
             t.setPassword(
@@ -50,7 +50,7 @@ public class TeamsCreateServlet extends HttpServlet {
                         (String)this.getServletContext().getAttribute("pepper")
                     )
                 );
-
+            //現在の日時を取得し、オブジェクトに格納
             Timestamp currentTime = new Timestamp(System.currentTimeMillis());
             t.setCreated_at(currentTime);
             t.setUpdated_at(currentTime);

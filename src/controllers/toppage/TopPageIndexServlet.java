@@ -37,7 +37,7 @@ public class TopPageIndexServlet extends HttpServlet {
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         EntityManager em = DBUtil.createEntityManager();
-
+        //セッションからアカウントオブジェクトを取得
         Account login_account = (Account)request.getSession().getAttribute("login_account");
 
 
@@ -53,11 +53,11 @@ public class TopPageIndexServlet extends HttpServlet {
                                   .setFirstResult(15 * (page - 1))
                                   .setMaxResults(15)
                                   .getResultList();
-//スケジュールの数を取得
+        //スケジュールの数を取得
         long schedules_count = (long)em.createNamedQuery("getMySchedulesCount", Long.class)
                                      .setParameter("account", login_account)
                                      .getSingleResult();
-
+        //アカウントが所属しているチームを取得
         List<Account_Team> teams = em.createNamedQuery("getMyTeams", Account_Team.class)
                 .setFirstResult(15 * (page - 1))
                 .setParameter("account_Id", login_account)

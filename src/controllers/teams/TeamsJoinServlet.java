@@ -61,8 +61,9 @@ public class TeamsJoinServlet extends HttpServlet {
                     (String)this.getServletContext().getAttribute("pepper")
                     );
 
-     // 社員番号とパスワードが正しいかチェックする
+     // チーム番号とパスワードが正しいかチェックする
         try {
+            //正しかった場合、チームオブジェクトを取得
             t = em.createNamedQuery("checkJoinCodeAndPassword", Team.class)
                   .setParameter("team_code", team_code)
                   .setParameter("pass", password)
@@ -89,6 +90,7 @@ public class TeamsJoinServlet extends HttpServlet {
         EntityManager em = DBUtil.createEntityManager();
 
         Account_Team a_t = new Account_Team();
+        //a_tオブジェクトにそれぞれのオブジェクトを格納
         a_t.setAccount_Id((Account) request.getSession().getAttribute("login_account"));
         a_t.setTeam_Id(t);
 

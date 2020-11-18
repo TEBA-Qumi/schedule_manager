@@ -36,8 +36,9 @@ public class DailySchedulesServlet extends HttpServlet {
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         EntityManager em = DBUtil.createEntityManager();
-
+        //セッションからアカウントオブジェクトを取得
         Account login_account = (Account)request.getSession().getAttribute("login_account");
+        //日付データを取得
         Date schedule_date = new Date(System.currentTimeMillis());
         String rd_str = request.getParameter("schedule_date");
         if(rd_str != null && !rd_str.equals("")){
@@ -50,6 +51,7 @@ public class DailySchedulesServlet extends HttpServlet {
         } catch(Exception e) {
             page = 1;
         }
+        //日付ごとのスケジュールを取得
         List<Schedule> schedules = em.createNamedQuery("getMyDailySchedules", Schedule.class)
                                   .setParameter("account", login_account)
                                   .setParameter("schedule_date", schedule_date)

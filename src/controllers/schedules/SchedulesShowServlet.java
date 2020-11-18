@@ -38,6 +38,7 @@ public class SchedulesShowServlet extends HttpServlet {
         EntityManager em = DBUtil.createEntityManager();
 
         Account login_account = (Account)request.getSession().getAttribute("login_account");
+        //アカウントが所属しているチームを取得
         List<Account_Team> teams = em.createNamedQuery("getMyTeams", Account_Team.class)
                 .setParameter("account_Id", login_account)
                 .getResultList();
