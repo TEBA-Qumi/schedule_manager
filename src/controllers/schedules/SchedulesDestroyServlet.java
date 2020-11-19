@@ -15,7 +15,7 @@ import utils.DBUtil;
 /**
  * Servlet implementation class SchedulesDestroyServlet
  */
-@WebServlet("/schedule/destroy")
+@WebServlet("/schedules/destroy")
 public class SchedulesDestroyServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
