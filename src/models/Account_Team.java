@@ -22,7 +22,14 @@ import javax.persistence.Table;
             name = "getMyTeamsCount",
             query = "SELECT COUNT(a_t) FROM Account_Team AS a_t"
             ),
-
+    @NamedQuery(
+            name = "getTeam",
+            query = "SELECT a_t FROM Account_Team AS a_t WHERE a_t.account_Id = :account_Id AND a_t.team_Id = :team_Id"
+            ),
+    @NamedQuery(
+            name = "exitTeam",
+            query = "SELECT a_t FROM Account_Team AS a_t WHERE a_t.team_Id = :team_Id"
+            )
     })
 @Entity
 public class Account_Team {
