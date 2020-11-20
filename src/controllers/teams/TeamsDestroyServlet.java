@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import models.Account;
 import models.Account_Team;
 import utils.DBUtil;
 
@@ -35,9 +36,11 @@ public class TeamsDestroyServlet extends HttpServlet {
         if(_token != null && _token.equals(request.getSession().getId())) {
             EntityManager em = DBUtil.createEntityManager();
 
+            Account login_account = (Account)request.getSession().getAttribute("login_account");
 
             Account_Team t = em.createNamedQuery("exitTeam", Account_Team.class)
                     .setParameter("team_Id",request.getSession().getAttribute("join_team"))
+                    .setParameter("account_Id", login_account)
                     .getSingleResult();
 
             em.getTransaction().begin();

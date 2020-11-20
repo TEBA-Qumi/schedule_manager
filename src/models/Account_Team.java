@@ -28,7 +28,7 @@ import javax.persistence.Table;
             ),
     @NamedQuery(
             name = "exitTeam",
-            query = "SELECT a_t FROM Account_Team AS a_t WHERE a_t.team_Id = :team_Id"
+            query = "SELECT a_t FROM Account_Team AS a_t WHERE a_t.team_Id = :team_Id AND a_t.account_Id = :account_Id"
             )
     })
 @Entity
