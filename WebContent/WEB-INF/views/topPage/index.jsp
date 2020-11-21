@@ -55,14 +55,40 @@
         </div>
         <p><a href="<c:url value='/schedules/new' />">スケジュールの追加</a></p>
 
-        <h3>${year}年${month}月</h3>
+        <h3><a href="<c:url value='/?month=${prevMonth}'/>">＜</a>
+            <c:choose>
+                <c:when test="${month % 13 == 0}">${year}年1月</c:when>
+                <c:otherwise>${year}年${month % 13}月</c:otherwise>
+            </c:choose>
+        <a href="<c:url value='/?month=${nextMonth}' />">＞</a></h3>
         <table id="calendar">
-            <c:forEach var="cal" begin="1" end="${date}" step="1">
+             <thead>
                 <tr>
-                    <td class="calendar"><a href="<c:url value='/schedules/daily?schedule_date=${year}-${month}-${cal}' />">${cal}</a></td>
+                   <th style="text-align: center; color: red "><b>日</b></th>
+                   <th style="text-align: center;"><b>月</b></th>
+                   <th style="text-align: center;"><b>火</b></th>
+                   <th style="text-align: center;"><b>水</b></th>
+                   <th style="text-align: center;"><b>木</b></th>
+                   <th style="text-align: center;"><b>金</b></th>
+                   <th style="text-align: center; color: blue;"><b>土</b></th>
                 </tr>
-            </c:forEach>
+            </thead>
+            <tbody>
+                <tr>
+                    <c:forEach var="day" items="${week}" varStatus="status">
+                        <td class="calendar" align="center">
+                        <a href="<c:url value='/schedules/daily?schedule_date=${year}-${month}-${day}' />">${day}</a>
+                        </td>
+                        <c:if test="${(status.count%7)==0}">
+                          </tr>
+                          <tr>
+                        </c:if>
+                    </c:forEach>
+                </tr>
+            </tbody>
         </table>
+
+
 
         <h3>チーム一覧</h3>
         <div id = "team">
