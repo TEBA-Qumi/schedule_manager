@@ -36,35 +36,61 @@ public class DailySchedulesServlet extends HttpServlet {
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         EntityManager em = DBUtil.createEntityManager();
-        //セッションからアカウントオブジェクトを取得
-        Account login_account = (Account)request.getSession().getAttribute("login_account");
-        //日付データを取得
-        Date schedule_date = new Date(System.currentTimeMillis());
-        String rd_str = request.getParameter("schedule_date");
-        if(rd_str != null && !rd_str.equals("")){
-            schedule_date = Date.valueOf(request.getParameter("schedule_date"));
-        }
-
         int page;
         try{
             page = Integer.parseInt(request.getParameter("page"));
         } catch(Exception e) {
             page = 1;
         }
-        //日付ごとのスケジュールを取得
-        List<Schedule> schedules = em.createNamedQuery("getMyDailySchedules", Schedule.class)
-                                  .setParameter("account", login_account)
-                                  .setParameter("schedule_date", schedule_date)
-                                  .setFirstResult(15 * (page - 1))
-                                  .setMaxResults(15)
-                                  .getResultList();
+        if(request.getParameter("schedule_date") != null && request.getParameter("id") != null){
+            //チームidを取得
+            int id = Integer.parseInt(request.getParameter("id"));
+            //日付データを取得
+            Date schedule_date = new Date(System.currentTimeMillis());
+            String rd_str = request.getParameter("schedule_date");
+            if(rd_str != null && !rd_str.equals("")){
+                schedule_date = Date.valueOf(request.getParameter("schedule_date"));
+            }
 
-        em.close();
+          //日付ごとのスケジュールを取得
+            List<Schedule> schedules = em.createNamedQuery("getTeamDailySchedules", Schedule.class)
+                    .setParameter("id", id)
+                    .setParameter("schedule_date", schedule_date)
+                    .setFirstResult(15 * (page - 1))
+                    .setMaxResults(15)
+                    .getResultList();
 
-        request.setAttribute("schedules", schedules);
+            em.close();
 
-        RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/schedules/daily.jsp");
-        rd.forward(request, response);
+            request.setAttribute("schedules", schedules);
+
+            RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/schedules/teamDaily.jsp");
+            rd.forward(request, response);
+        }else{
+            //セッションからアカウントオブジェクトを取得
+            Account login_account = (Account)request.getSession().getAttribute("login_account");
+            //日付データを取得
+            Date schedule_date = new Date(System.currentTimeMillis());
+            String rd_str = request.getParameter("schedule_date");
+            if(rd_str != null && !rd_str.equals("")){
+                schedule_date = Date.valueOf(request.getParameter("schedule_date"));
+            }
+
+            //日付ごとのスケジュールを取得
+            List<Schedule> schedules = em.createNamedQuery("getMyDailySchedules", Schedule.class)
+                    .setParameter("account", login_account)
+                    .setParameter("schedule_date", schedule_date)
+                    .setFirstResult(15 * (page - 1))
+                    .setMaxResults(15)
+                    .getResultList();
+
+            em.close();
+
+            request.setAttribute("schedules", schedules);
+            RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/schedules/daily.jsp");
+            rd.forward(request, response);
+        }
+
     }
 
 }

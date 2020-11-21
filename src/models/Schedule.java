@@ -40,6 +40,10 @@ import javax.persistence.Table;
     @NamedQuery(
             name = "getMyDailySchedules",
             query = "SELECT s FROM Schedule AS s WHERE s.account = :account AND s.schedule_date = :schedule_date"
+            ),
+    @NamedQuery(
+            name = "getTeamDailySchedules",
+            query = "SELECT s FROM Schedule AS s WHERE s.share_flag = :id AND s.schedule_date = :schedule_date"
             )
 })
 @Entity

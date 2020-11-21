@@ -22,7 +22,13 @@
                     <c:forEach var="schedule" items="${schedules}" varStatus="status">
                                 <tr class="row${status.count % 2}">
                                     <td class="schedule_name"><c:out value="${schedule.account.name}" /></td>
-                                    <td class="schedule_date"><a href="<c:url value='/schedules/daily?schedule_date=${schedule.schedule_date}'/>"><fmt:formatDate value='${schedule.schedule_date}' pattern='yyyy-MM-dd' /></a></td>
+                                    <td class="schedule_date">
+                                        <a href="
+                                            <c:url value='/schedules/daily?schedule_date=${schedule.schedule_date}'>
+                                                <c:param name='id' value='${schedule.share_flag}' />
+                                            </c:url>
+                                        "><fmt:formatDate value='${schedule.schedule_date}' pattern='yyyy-MM-dd' /></a>
+                                    </td>
                                     <td class="schedule_title">${schedule.title}</td>
                                     <td class="schedule_action">
                                         <c:choose>
