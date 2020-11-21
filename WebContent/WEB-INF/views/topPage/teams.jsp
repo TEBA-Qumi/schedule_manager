@@ -55,7 +55,12 @@
         </div>
         <p><a href="<c:url value='/schedules/new' />">スケジュールの追加</a></p>
 
-        <h3><a href="<c:url value='/?month=${prevMonth}'/>">＜</a>${year}年${month}月<a href="<c:url value='/?month=${nextMonth}' />">＞</a></h3>
+        <h3><a href="<c:url value='/?month=${prevMonth}'/>">＜</a>
+        <c:choose>
+                <c:when test="${month % 13 == 0}">${year}年1月</c:when>
+                <c:otherwise>${year}年${month % 13}月</c:otherwise>
+        </c:choose>
+        <a href="<c:url value='/?month=${nextMonth}' />">＞</a></h3>
         <table id="calendar">
              <thead>
                 <tr>

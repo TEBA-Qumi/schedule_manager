@@ -74,14 +74,16 @@ public class TeamsTopPageServlet extends HttpServlet {
           catch(Exception e){
             month =  cal.get(Calendar.MONTH);
         }
-        //今月が何日あるか確認
-        cal.set(year, month++, 0);
-        int thisMonthlastDay = cal.get(Calendar.DATE);
 
         //今月1日の曜日を取得
         cal.set(year,month,1);
         //0=日曜　6=土曜にする(ArrayListのスタートが0なので合わせる)
         int firstWeek = cal.get(Calendar.DAY_OF_WEEK) - 1;
+
+        //今月が何日あるか確認
+        cal.set(year, month++, 0);
+        int thisMonthlastDay = cal.get(Calendar.DATE);
+
 
         //カレンダー
         List<Integer> week = new ArrayList<Integer>();
@@ -100,14 +102,18 @@ public class TeamsTopPageServlet extends HttpServlet {
             if(thisMonthlastDay < day) break;
         }
 
+        if(month > 12 ){
+            year++;
+        }
+
         request.setAttribute("year",year);
-        request.setAttribute("month",month+1);
+        request.setAttribute("month",month);
         request.setAttribute("date",thisMonthlastDay);
 
         request.setAttribute("week",week);
 
-        request.setAttribute("nextMonth",month+1);
-        request.setAttribute("prevMonth",month-1);
+        request.setAttribute("nextMonth",month);
+        request.setAttribute("prevMonth",month - 2);
 
         if(request.getSession().getAttribute("flush") != null) {
             request.setAttribute("flush", request.getSession().getAttribute("flush"));
