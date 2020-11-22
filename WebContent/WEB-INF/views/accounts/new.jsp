@@ -7,6 +7,7 @@
         <form method="POST" action="<c:url value='/accounts/create' />">
             <c:import url="_form.jsp" />
         </form>
+        <a href="<c:url value='/login/login.jsp' />">ログインページ</a>
 
     </c:param>
 </c:import>
