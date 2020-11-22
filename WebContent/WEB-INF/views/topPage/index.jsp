@@ -95,15 +95,18 @@
 
         <div id = "team">
             <h3>チーム一覧</h3>
-            <c:forEach var="team" items="${teams}" varStatus="status">
-                <a href = "<c:url value='/teams/topPage?id=${team.team_Id.id}' />"><c:out value="${team.team_Id.name}" /></a><br>
-            </c:forEach>
-        </div>
-        <div id = "edit_team">
-            <h3>チーム情報を編集する</h3>
-            <c:forEach var="team" items="${teams}" varStatus="status">
-                <a href = "<c:url value='/teams/edit?id=${team.team_Id.id}' />"><c:out value="${team.team_Id.name}" /></a><br>
-            </c:forEach>
+            <table>
+                <tr>
+                    <th class="team_name">チーム名</th>
+                    <th class="team_action">操作</th>
+                </tr>
+                <c:forEach var="team" items="${teams}" varStatus="status">
+                    <tr>
+                        <td class="team_name"><a href = "<c:url value='/teams/topPage?id=${team.team_Id.id}' />"><c:out value="${team.team_Id.name}" /></a></td>
+                        <td class="team_action"><a href = "<c:url value='/teams/edit?id=${team.team_Id.id}' />">チーム情報を編集する</a></td>
+                    </tr>
+                </c:forEach>
+            </table>
         </div>
 
         <p><a href="<c:url value='/teams/new' />">チームを作成</a></p>
