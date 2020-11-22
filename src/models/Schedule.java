@@ -19,7 +19,7 @@ import javax.persistence.Table;
 @NamedQueries({
     @NamedQuery(
             name = "getTeamsAllSchedules",
-            query = "SELECT s FROM Schedule AS s WHERE s.share_flag = :share_flag"
+            query = "SELECT s FROM Schedule AS s WHERE s.share_flag = :share_flag ORDER BY s.schedule_date ASC, s.share_flag ASC"
             ),
     @NamedQuery(
             name = "getAllSchedules",
@@ -31,7 +31,7 @@ import javax.persistence.Table;
             ),
     @NamedQuery(
             name = "getMyAllSchedules",
-            query = "SELECT s FROM Schedule AS s WHERE s.account = :account ORDER BY s.id DESC"
+            query = "SELECT s FROM Schedule AS s WHERE s.account = :account ORDER BY s.schedule_date ASC"
             ),
     @NamedQuery(
             name = "getMySchedulesCount",
