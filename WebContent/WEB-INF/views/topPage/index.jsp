@@ -58,7 +58,10 @@
         <h3><a href="<c:url value='/?month=${prevMonth}'/>">＜</a>
             <c:choose>
                 <c:when test="${month % 13 == 0}">${year}年1月</c:when>
-                <c:otherwise>${year}年${month % 13}月</c:otherwise>
+                <c:otherwise>
+                    <c:if test="${month != 12}">${year}年${month % 12}月</c:if>
+                    <c:if test="${month == 12}">${year}年${month % 13}月</c:if>
+                </c:otherwise>
             </c:choose>
         <a href="<c:url value='/?month=${nextMonth}' />">＞</a></h3>
         <table id="calendar">
