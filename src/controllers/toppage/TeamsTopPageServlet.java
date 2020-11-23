@@ -55,11 +55,17 @@ public class TeamsTopPageServlet extends HttpServlet {
                     .setMaxResults(15)
                     .getResultList();
 
+            long schedules_count = (long)em.createNamedQuery("getTeamsSchedulesCount", Long.class)
+                    .setParameter("share_flag", id)
+                    .getSingleResult();
+
+
             em.close();
 
             request.setAttribute("schedules", schedules);
             request.setAttribute("page", page);
             request.setAttribute("id", id);
+            request.setAttribute("schedules_count", schedules_count);
         }
         //カレンダーのためのデータを取得
         Calendar cal = Calendar.getInstance();

@@ -22,6 +22,10 @@ import javax.persistence.Table;
             query = "SELECT s FROM Schedule AS s WHERE s.share_flag = :share_flag ORDER BY s.schedule_date ASC, s.share_flag ASC"
             ),
     @NamedQuery(
+            name = "getTeamsSchedulesCount",
+            query = "SELECT COUNT(s) FROM Schedule AS s WHERE s.share_flag = :share_flag"
+            ),
+    @NamedQuery(
             name = "getAllSchedules",
             query = "SELECT s FROM Schedule AS s"
             ),

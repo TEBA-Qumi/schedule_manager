@@ -80,6 +80,7 @@ button {
     background-color: #d4edda;
 }
 
+
 table#schedule_list th {
     font-weight: bold;
     padding: 10px 2%;
@@ -133,4 +134,25 @@ tr.row1 {
 }
 tr.row0 {
         background-color: #ffffff;
+}
+
+div#team{
+        width:30%;
+}
+
+div#schedule{
+    float:left;
+    margin-right:5%;
+    width:45%;
+}
+
+div#calendar{
+    display:block;
+    float:right;
+    width:45%;
+    margin-right:5%;
+}
+
+div#topPage{
+    display:inline-block;
 }
