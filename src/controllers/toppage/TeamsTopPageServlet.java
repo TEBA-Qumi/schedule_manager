@@ -59,6 +59,7 @@ public class TeamsTopPageServlet extends HttpServlet {
 
             request.setAttribute("schedules", schedules);
             request.setAttribute("page", page);
+            request.setAttribute("id", id);
         }
         //カレンダーのためのデータを取得
         Calendar cal = Calendar.getInstance();
@@ -105,7 +106,7 @@ public class TeamsTopPageServlet extends HttpServlet {
         if(month > 12 ){
             year++;
         }
-
+        //カレンダーに使う値をセット
         request.setAttribute("year",year);
         request.setAttribute("month",month);
         request.setAttribute("date",thisMonthlastDay);

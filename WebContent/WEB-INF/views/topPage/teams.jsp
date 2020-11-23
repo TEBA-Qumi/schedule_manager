@@ -61,15 +61,27 @@
         </div>
         <p><a href="<c:url value='/schedules/new' />">スケジュールの追加</a></p>
 
-        <h3><a href="<c:url value='/?month=${prevMonth}'/>">＜</a>
+        <h3>
+        <!-- 先月 -->
+        <a href="
+            <c:url value='/teams/topPage?month=${prevMonth}'>
+                <c:param name='id' value='${id}'/>
+            </c:url>
+        ">＜</a>
+        <!-- 今月 -->
         <c:choose>
-                <c:when test="${month % 12 == 0}">${year}年1月</c:when>
+                <c:when test="${month % 13 == 0}">${year}年1月</c:when>
                 <c:otherwise>
                     <c:if test="${month != 12}">${year}年${month % 12}月</c:if>
                     <c:if test="${month == 12}">${year}年${month % 13}月</c:if>
                 </c:otherwise>
         </c:choose>
-        <a href="<c:url value='/?month=${nextMonth}' />">＞</a></h3>
+        <!-- 来月 -->
+        <a href="
+            <c:url value='/teams/topPage?month=${nextMonth}' >
+                <c:param name='id' value='${id}' />
+            </c:url>
+        ">＞</a></h3>
         <table id="calendar">
              <thead>
                 <tr>
@@ -85,13 +97,19 @@
             <tbody>
                 <tr>
                     <c:forEach var="day" items="${week}" varStatus="status">
-                        <td class="calendar" align="center">
-                        <a href="<c:url value='/schedules/daily?schedule_date=${year}-${month % 12}-${day}' />">${day}</a>
-                        </td>
-                        <c:if test="${(status.count%7)==0}">
-                          </tr>
-                          <tr>
-                        </c:if>
+                        <forEach var="schedule" items="${schedules}" varStatus="status">
+                            <td class="calendar" align="center">
+                            <a href="
+                               <c:url value='/schedules/daily?schedule_date=${year}-${month % 12}-${day}' >
+                                   <c:param name='id' value='${id}'/>
+                               </c:url>
+                           ">${day}</a>
+                            </td>
+                            <c:if test="${(status.count%7)==0}">
+                              </tr>
+                              <tr>
+                            </c:if>
+                        </forEacH>
                     </c:forEach>
                 </tr>
             </tbody>
