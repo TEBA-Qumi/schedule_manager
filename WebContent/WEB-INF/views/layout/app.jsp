@@ -7,6 +7,7 @@
         <title>スケジュール管理アプリ</title>
         <link rel="stylesheet" href="<c:url value='/CSS/reset.css' />">
         <link rel="stylesheet" href="<c:url value='/CSS/style.css' />">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     </head>
     <body>
         <div id="wrapper">
@@ -17,7 +18,7 @@
                 <c:if test="${sessionScope.login_account != null}">
                     <div id="account_name">
                         <c:out value="${sessionScope.login_account.name}" />&nbsp;さん&nbsp;&nbsp;&nbsp;
-                        <a href="<c:url value='/accounts/show?id=${login_account.id}' />">アカウント詳細</a>
+                        <a href="<c:url value='/accounts/show?id=${login_account.id}' />">アカウント詳細</a>&nbsp;&nbsp;&nbsp;
                         <a href="<c:url value='/logout' />">ログアウト</a>
                     </div>
                 </c:if>

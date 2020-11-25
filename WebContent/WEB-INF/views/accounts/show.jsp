@@ -5,7 +5,9 @@
     <c:param name="content">
         <c:choose>
             <c:when test="${account != null}">
-                <h2>id : ${account.id} のアカウント情報　詳細ページ</h2>
+                <div class="account">
+                    <h2>アカウント情報　詳細ページ</h2>
+                </div>
 
                 <table>
                     <tbody>
