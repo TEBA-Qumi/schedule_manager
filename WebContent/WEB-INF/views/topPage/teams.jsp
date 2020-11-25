@@ -8,7 +8,9 @@
                 <c:out value="${flush}"></c:out>
             </div>
         </c:if>
-        <h2>スケジュール管理システムへようこそ</h2>
+        <div class="top">
+            <h2 class="top">スケジュール管理システムへようこそ</h2>
+        </div>
         <div class="top">
             <h3>【スケジュール　一覧】</h3>
         </div>

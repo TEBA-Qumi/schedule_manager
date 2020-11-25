@@ -157,7 +157,7 @@ div#topPage{
     margin-top:2%;
 }
 
-div.top{
+div.list{
     margin-top:4%;
     margin-bottom:2%;
 }
@@ -169,4 +169,12 @@ div.account{
 
 div#account_name{
     font-size:20px;
+}
+
+div.top{
+    margin-top:2%;
+}
+
+h2.top{
+    font-weight:550;
 }
