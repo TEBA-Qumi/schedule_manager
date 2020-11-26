@@ -68,6 +68,7 @@ button {
 
 #footer {
     text-align: center;
+    margin-top:3%;
 }
 
 #flush_success {
@@ -177,4 +178,8 @@ div.top{
 
 h2.top{
     font-weight:550;
+}
+
+div.createAccount{
+    margin-top:3%;
 }

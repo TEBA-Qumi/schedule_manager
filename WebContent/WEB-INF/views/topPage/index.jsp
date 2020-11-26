@@ -35,10 +35,10 @@
                                             <c:choose>
                                             <c:when test="${schedule.finish_flag == 1}">
                                                 (完了済み)<br>
-                                                <a href="<c:url value='/schedules/show?id=${schedule.id}'/>">詳細を見る</a>
+                                                <a href="<c:url value='/schedules/show?id=${schedule.id}'/>">詳細</a>
                                             </c:when>
                                             <c:otherwise>
-                                                <a href="<c:url value='/schedules/show?id=${schedule.id}'/>">詳細を見る</a>
+                                                <a href="<c:url value='/schedules/show?id=${schedule.id}'/>">詳細</a>
                                             </c:otherwise>
                                         </c:choose>
                                         </td>
