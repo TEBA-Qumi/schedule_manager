@@ -48,6 +48,7 @@ public class TeamsJoinServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Boolean check_result = false;
 
+        //入力された値を取得
         String team_code = request.getParameter("team_code");
         String plain_pass = request.getParameter("password");
 

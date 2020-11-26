@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import models.Account;
+import models.Account_Team;
 import models.Team;
 import models.validators.TeamValidator;
 import utils.DBUtil;
@@ -66,8 +68,16 @@ public class TeamsCreateServlet extends HttpServlet {
                 RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/teams/new.jsp");
                 rd.forward(request, response);
             } else {
+                //チームの作成を確定
                 em.getTransaction().begin();
                 em.persist(t);
+
+                //作成したチームに参加させる
+                Account_Team a_t = new Account_Team();
+              //a_tオブジェクトにそれぞれのオブジェクトを格納
+                a_t.setAccount_Id((Account) request.getSession().getAttribute("login_account"));
+                a_t.setTeam_Id(t);
+                em.persist(a_t);
                 em.getTransaction().commit();
                 request.getSession().setAttribute("flush", "チームの作成が完了しました。");
                 em.close();
