@@ -3,7 +3,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:import url="/WEB-INF/views/layout/app.jsp">
     <c:param name="content">
-        <h3>スケジュール一覧</h3><br>
+        <h3 class="top">スケジュール一覧</h3>
         <table id="schedule_list">
                 <tbody>
                     <tr>

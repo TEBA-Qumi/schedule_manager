@@ -10,9 +10,7 @@
         </c:if>
         <div class="top">
             <h2 class="top">スケジュール管理システムへようこそ</h2>
-        </div>
-        <div class="list">
-            <h3>【スケジュール　一覧】</h3>
+            <h3 class="top">【スケジュール　一覧】</h3>
         </div>
         <div class="container-fluid">
             <div class="row">
@@ -60,7 +58,9 @@
                             </c:choose>
                         </c:forEach>
                     </div>
-                    <p><a href="<c:url value='/schedules/new' />">スケジュールの追加</a></p>
+                    <div class="add">
+                        <p><a href="<c:url value='/schedules/new' />">スケジュールの追加</a></p>
+                    </div>
                 </div>
 
                 <div class="col-md-5">

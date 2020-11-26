@@ -158,10 +158,6 @@ div#topPage{
     margin-top:2%;
 }
 
-div.list{
-    margin-top:4%;
-    margin-bottom:2%;
-}
 
 div.account{
     margin-top:3%;
@@ -174,12 +170,24 @@ div#account_name{
 
 div.top{
     margin-top:2%;
+    margin-bottom:1%;
 }
 
 h2.top{
-    font-weight:550;
+    font-weight:600;
+    font-size:37px;
+}
+
+h3.top{
+    margin-top:3%;
+    font-weight:600;
+    margin-bottom:2%;
 }
 
 div.createAccount{
     margin-top:3%;
+}
+
+div.add{
+    margin-top:1%;
 }
