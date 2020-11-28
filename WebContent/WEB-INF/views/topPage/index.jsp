@@ -16,6 +16,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <c:if test="${sessionScope.login_account != null}">
+                        <!-- スケジュールを表示 -->
                         <table id="schedule_list">
                             <tbody>
                                 <tr>
@@ -109,6 +110,7 @@
         </div>
 
 
+        <!-- チームを表示 -->
         <div id = "team">
             <h3>チーム一覧</h3>
             <table>

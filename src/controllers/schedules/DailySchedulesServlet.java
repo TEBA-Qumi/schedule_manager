@@ -42,6 +42,7 @@ public class DailySchedulesServlet extends HttpServlet {
         } catch(Exception e) {
             page = 1;
         }
+        //チームidと日付が指定されていた場合
         if(request.getParameter("schedule_date") != null && request.getParameter("id") != null){
             //チームidを取得
             int id = Integer.parseInt(request.getParameter("id"));

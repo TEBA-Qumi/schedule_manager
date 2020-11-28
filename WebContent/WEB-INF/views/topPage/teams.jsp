@@ -12,6 +12,7 @@
             <h2 class="top">スケジュール管理システムへようこそ</h2>
             <h3 class="top">【スケジュール　一覧】</h3>
         </div>
+        <!-- スケジュールを表示 -->
         <div class="container">
             <div class="row">
                 <div class="col-md-6">

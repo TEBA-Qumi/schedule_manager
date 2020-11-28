@@ -54,7 +54,7 @@ public class TeamsTopPageServlet extends HttpServlet {
                     .setParameter("share_flag", id)
                     .setMaxResults(15)
                     .getResultList();
-
+            //スケジュールの数を取得
             long schedules_count = (long)em.createNamedQuery("getTeamsSchedulesCount", Long.class)
                     .setParameter("share_flag", id)
                     .getSingleResult();
@@ -67,6 +67,7 @@ public class TeamsTopPageServlet extends HttpServlet {
             request.setAttribute("id", id);
             request.setAttribute("schedules_count", schedules_count);
         }
+
         //カレンダーのためのデータを取得
         Calendar cal = Calendar.getInstance();
         //現在の年と月を取得

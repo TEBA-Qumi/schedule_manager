@@ -48,7 +48,7 @@ public class TopPageIndexServlet extends HttpServlet {
         } catch(Exception e) {
             page = 1;
         }
-        //スケジュールの内容を取得
+        //アカウント番号に対応したスケジュールの内容を取得
         List<Schedule> schedules = em.createNamedQuery("getMyAllSchedules", Schedule.class)
                                   .setParameter("account", login_account)
                                   .setFirstResult(15 * (page - 1))
