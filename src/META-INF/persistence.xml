@@ -8,13 +8,13 @@
 		<class>models.Account_Team</class>
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
-			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/schedule_manager?useSSL=false&amp;useUnicode=true&amp;characterEncoding=utf8"/>
-			<property name="javax.persistence.jdbc.user" value="TEBA_Qumi"/>
-			<property name="javax.persistence.jdbc.password" value="tebakumi0518"/>
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://us-cdbr-east-03.cleardb.com/heroku_305c762ab656294?reconnect=true&amp;useSSL=false&amp;useUnicode=true&amp;characterEncoding=utf8&amp;characterSetResults=utf8"/>
 			<property name="javax.persistence.schema-generation.database.action" value="create"/>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect"/>
 			<property name="hibernate.show_sql" value="true"/>
 			<property name="hibernate.format_sql" value="true"/>
+			<property name="javax.persistence.jdbc.user" value="b44dc6f057f87a"/>
+			<property name="javax.persistence.jdbc.password" value="76a70b0d"/>
 		</properties>
 	</persistence-unit>
 </persistence>
