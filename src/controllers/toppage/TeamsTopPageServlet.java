@@ -89,7 +89,7 @@ public class TeamsTopPageServlet extends HttpServlet {
         int firstWeek = cal.get(Calendar.DAY_OF_WEEK) - 1;
 
         //今月が何日あるか確認
-        cal.set(year, month++, 0);
+        cal.set(year, (month + 1), 0);
         int thisMonthlastDay = cal.get(Calendar.DATE);
 
 
@@ -115,13 +115,13 @@ public class TeamsTopPageServlet extends HttpServlet {
         }
         //カレンダーに使う値をセット
         request.setAttribute("year",year);
-        request.setAttribute("month",month);
+        request.setAttribute("month",(month + 1));
         request.setAttribute("date",thisMonthlastDay);
 
         request.setAttribute("week",week);
 
-        request.setAttribute("nextMonth",month);
-        request.setAttribute("prevMonth",month - 2);
+        request.setAttribute("nextMonth",(month + 1));
+        request.setAttribute("prevMonth",(month - 1));
 
         if(request.getSession().getAttribute("flush") != null) {
             request.setAttribute("flush", request.getSession().getAttribute("flush"));
