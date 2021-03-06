@@ -68,15 +68,15 @@ public class TopPageIndexServlet extends HttpServlet {
         em.close();
         //カレンダーのためのデータを取得
         Calendar cal = Calendar.getInstance();
-        //現在の年と月を取得
+        //現在の年を取得
         int year = cal.get(Calendar.YEAR);
 
-        //月が指定されている場合
         int month;
+        //月が指定されている場合
         try{
             month = Integer.parseInt(request.getParameter("month"));
         }
-        //指定が無ければ
+        //指定が無ければ現在の月を取得
           catch(Exception e){
             month =  cal.get(Calendar.MONTH );
         }
@@ -87,7 +87,7 @@ public class TopPageIndexServlet extends HttpServlet {
         int firstWeek = cal.get(Calendar.DAY_OF_WEEK) - 1;
 
         //今月が何日あるか確認
-        cal.set(year, month++, 0);
+        cal.set(year, (month + 1), 0);
         int thisMonthlastDay = cal.get(Calendar.DATE);
 
         //カレンダー
@@ -113,13 +113,13 @@ public class TopPageIndexServlet extends HttpServlet {
 
         //カレンダーに関する値をセット
         request.setAttribute("year",year);
-        request.setAttribute("month",month);
+        request.setAttribute("month",month + 1);
         request.setAttribute("lastDate",thisMonthlastDay);
 
         request.setAttribute("week",week);
 
-        request.setAttribute("nextMonth",month);
-        request.setAttribute("prevMonth",month - 2);
+        request.setAttribute("nextMonth",(month + 1));
+        request.setAttribute("prevMonth",(month - 1));
 
         //スケジュール＆チームに関して値をセット
         request.setAttribute("teams", teams);

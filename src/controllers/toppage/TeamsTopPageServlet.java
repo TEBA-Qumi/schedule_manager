@@ -85,7 +85,7 @@ public class TeamsTopPageServlet extends HttpServlet {
 
         //今月1日の曜日を取得
         cal.set(year,month,1);
-        //0=日曜　6=土曜にする(ArrayListのスタートが0なので合わせる)
+        //今月の1日の曜日を求める※0=日曜　6=土曜にする(ArrayListのスタートが0なので合わせる)
         int firstWeek = cal.get(Calendar.DAY_OF_WEEK) - 1;
 
         //今月が何日あるか確認

@@ -13,8 +13,8 @@
 			<property name="hibernate.show_sql" value="true"/>
 			<property name="hibernate.format_sql" value="true"/>
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/schedule_manager?useSSL=false&amp;useUnicode=true&amp;characterEncoding=utf8"/>
-			<property name="javax.persistence.jdbc.user" value="TEBA_Qumi"/>
 			<property name="javax.persistence.jdbc.password" value="Teba_Qumi0518may"/>
+			<property name="javax.persistence.jdbc.user" value="root"/>
 		</properties>
 	</persistence-unit>
 </persistence>

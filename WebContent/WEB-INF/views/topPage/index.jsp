@@ -93,7 +93,7 @@
                             <tr>
                                 <c:forEach var="day" items="${week}" varStatus="status">
                                     <td class="calendar" align="center">
-                                    <a href="<c:url value='/schedules/daily?schedule_date=${year}-${month % 12}-${day}' />">${day}</a>
+                                        <a href="<c:url value='/schedules/daily?schedule_date=${year}-${month % 12}-${day}' />">${day}</a>
                                     </td>
                                     <c:if test="${(status.count%7)==0}">
                                       </tr>
